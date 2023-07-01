@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "*",
+    origin: true,
     credentials: true,
   })
 );
@@ -44,7 +44,7 @@ app.post("/login", usersController.login);
 app.get("/logout", usersController.logout);
 app.get("/check-auth", requireAuth, usersController.checkAuth);
 
-app.post("/streamers", async (req, res) => {
+app.post("/streamers", requireAuth, async (req, res) => {
   const { name, description, streamingPlatform, upvotes, downvotes } = req.body;
 
   const streamer = await Streamer.create({
@@ -73,7 +73,7 @@ app.get("/streamers/:id", async (req, res) => {
   res.json({ streamer });
 });
 
-app.put("/streamers/:id/:vote", async (req, res) => {
+app.put("/streamers/:id/:vote", requireAuth, async (req, res) => {
   const streamerId = req.params.id;
   const voteType = req.params.vote;
   const { upvotes, downvotes } = req.body;
@@ -93,7 +93,7 @@ app.put("/streamers/:id/:vote", async (req, res) => {
   res.json({ streamer });
 });
 
-app.delete("/streamers/:id", async (req, res) => {
+app.delete("/streamers/:id", requireAuth, async (req, res) => {
   const streamerId = req.params.id;
 
   await Streamer.findByIdAndDelete(streamerId);
