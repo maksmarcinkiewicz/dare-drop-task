@@ -45,60 +45,86 @@ app.get("/logout", usersController.logout);
 app.get("/check-auth", requireAuth, usersController.checkAuth);
 
 app.post("/streamers", requireAuth, async (req, res) => {
-  const { name, description, streamingPlatform, upvotes, downvotes } = req.body;
+  try {
+    const { name, description, streamingPlatform, upvotes, downvotes } =
+      req.body;
 
-  const streamer = await Streamer.create({
-    name,
-    description,
-    streamingPlatform,
-    upvotes,
-    downvotes,
-  });
+    const streamer = await Streamer.create({
+      name,
+      description,
+      streamingPlatform,
+      upvotes,
+      downvotes,
+    });
 
-  io.emit("streamerCreated", streamer);
+    io.emit("streamerCreated", streamer);
 
-  res.json({ streamer });
+    res.json({ streamer });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(401);
+  }
 });
 
 app.get("/streamers", async (req, res) => {
-  const streamers = await Streamer.find();
+  try {
+    const streamers = await Streamer.find();
 
-  res.json({ streamers });
+    res.json({ streamers });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 });
 
 app.get("/streamers/:id", async (req, res) => {
-  const streamerId = req.params.id;
-  const streamer = await Streamer.findById(streamerId);
+  try {
+    const streamerId = req.params.id;
+    const streamer = await Streamer.findById(streamerId);
 
-  res.json({ streamer });
+    res.json({ streamer });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(400);
+  }
 });
 
 app.put("/streamers/:id/:vote", requireAuth, async (req, res) => {
-  const streamerId = req.params.id;
-  const voteType = req.params.vote;
-  const { upvotes, downvotes } = req.body;
+  try {
+    const streamerId = req.params.id;
+    const voteType = req.params.vote;
+    const { upvotes, downvotes } = req.body;
 
-  if (voteType === "upvote") {
-    await Streamer.findByIdAndUpdate(streamerId, {
-      $inc: { upvotes: 1 },
-    });
+    if (voteType === "upvote") {
+      await Streamer.findByIdAndUpdate(streamerId, {
+        $inc: { upvotes: 1 },
+      });
+    }
+    if (voteType === "downvote") {
+      await Streamer.findByIdAndUpdate(streamerId, {
+        $inc: { downvotes: 1 },
+      });
+    }
+    const streamer = await Streamer.findById(streamerId);
+    io.emit("updateVotes", streamer);
+    res.json({ streamer });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(401);
   }
-  if (voteType === "downvote") {
-    await Streamer.findByIdAndUpdate(streamerId, {
-      $inc: { downvotes: 1 },
-    });
-  }
-  const streamer = await Streamer.findById(streamerId);
-  io.emit("updateVotes", streamer);
-  res.json({ streamer });
 });
 
 app.delete("/streamers/:id", requireAuth, async (req, res) => {
-  const streamerId = req.params.id;
+  try {
+    const streamerId = req.params.id;
 
-  await Streamer.findByIdAndDelete(streamerId);
+    await Streamer.findByIdAndDelete(streamerId);
 
-  res.json({ succes: "streamer deleted" });
+    res.json({ succes: "streamer deleted" });
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(401);
+  }
 });
 
 server.listen(3010);

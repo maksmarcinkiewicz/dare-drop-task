@@ -1,14 +1,14 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a simple streamer spotlight application that allows users to add their favorite streamers and upvote or downvote them.",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Maksymilian Marcinkiewicz",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

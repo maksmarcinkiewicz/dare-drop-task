@@ -2,10 +2,26 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import streamer1 from "../assets/streamer1.png";
+import streamer2 from "../assets/streamer2.png";
+import streamer3 from "../assets/streamer3.png";
+import streamer4 from "../assets/streamer4.png";
+import streamer5 from "../assets/streamer5.png";
+import streamer6 from "../assets/streamer6.png";
+
+const streamerImages = [
+  streamer1,
+  streamer2,
+  streamer3,
+  streamer4,
+  streamer5,
+  streamer6,
+];
 
 export default function StreamerDetails({ fetchStreamer, streamer }) {
   const streamerId = useParams();
   const navigate = useNavigate();
+  const randomIndex = Math.floor(Math.random() * streamerImages.length);
+  const randomImage = streamerImages[randomIndex];
 
   useEffect(() => {
     fetchStreamer(streamerId.id);
@@ -15,9 +31,9 @@ export default function StreamerDetails({ fetchStreamer, streamer }) {
     <>
       {streamer ? (
         <>
-          <div className="flex gap-10 justify-center items-center mt-36">
+          <div className="flex gap-10 justify-center items-center mt-36 container mx-auto">
             <img
-              src={streamer1}
+              src={randomImage}
               alt="Streamer profile"
               className="w-3/12 rounded-full flex  "
             />
