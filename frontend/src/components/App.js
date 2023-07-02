@@ -8,6 +8,7 @@ import RequireAuth from "./RequireAuth";
 import SignupPage from "../pages/SignupPage";
 import LogoutPage from "../pages/LogoutPage";
 import StreamerDetails from "../pages/StreamerDetails";
+import Header from "./Header";
 
 const socket = io("http://localhost:3010");
 
@@ -81,20 +82,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <ul>
-          <li>
-            <Link to="/">home</Link>
-          </li>
-          <li>
-            <Link to="/login">login</Link>
-          </li>
-          <li>
-            <Link to="/signup">signup</Link>
-          </li>
-          <li>
-            <Link to="/logout">logout</Link>
-          </li>
-        </ul>
+        <Header />
         <Routes>
           <Route
             index
