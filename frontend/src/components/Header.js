@@ -4,7 +4,7 @@ import logo from "../assets/logo.png";
 export default function Header() {
   const store = authStore();
   return (
-    <div className="navbar bg-base-100 px-8">
+    <div className="navbar bg-base-300 px-8">
       <div className="flex-1">
         <Link to="/">
           <img src={logo} alt="logo" className="w-4/12" />

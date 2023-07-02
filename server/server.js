@@ -46,7 +46,7 @@ app.get("/check-auth", requireAuth, usersController.checkAuth);
 
 app.post("/streamers", requireAuth, async (req, res) => {
   try {
-    const { name, description, streamingPlatform, upvotes, downvotes } =
+    const { name, description, streamingPlatform, upvotes, downvotes, image } =
       req.body;
 
     const streamer = await Streamer.create({
@@ -55,6 +55,7 @@ app.post("/streamers", requireAuth, async (req, res) => {
       streamingPlatform,
       upvotes,
       downvotes,
+      image,
     });
 
     io.emit("streamerCreated", streamer);

@@ -7,7 +7,7 @@ export default function CreateStreamer({
 }) {
   const store = authStore();
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center bg-base-200 py-10">
       <h2 className="text-3xl font-bold mb-10">Create streamer</h2>
       <form onSubmit={createStreamer} className="flex flex-col gap-4">
         <input

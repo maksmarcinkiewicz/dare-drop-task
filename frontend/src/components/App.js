@@ -2,13 +2,29 @@ import { useState } from "react";
 import axios from "axios";
 import { io } from "socket.io-client";
 import StreamersPage from "../pages/StreamersPage";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "../pages/LoginPage";
 import RequireAuth from "./RequireAuth";
 import SignupPage from "../pages/SignupPage";
 import LogoutPage from "../pages/LogoutPage";
 import StreamerDetails from "../pages/StreamerDetails";
 import Header from "./Header";
+
+import streamer1 from "../assets/streamer1.png";
+import streamer2 from "../assets/streamer2.png";
+import streamer3 from "../assets/streamer3.png";
+import streamer4 from "../assets/streamer4.png";
+import streamer5 from "../assets/streamer5.png";
+import streamer6 from "../assets/streamer6.png";
+
+const streamerImages = [
+  streamer1,
+  streamer2,
+  streamer3,
+  streamer4,
+  streamer5,
+  streamer6,
+];
 
 const socket = io("http://localhost:3010");
 
@@ -19,6 +35,7 @@ function App() {
     name: "",
     description: "",
     streamingPlatform: "",
+    image: "",
   });
 
   const fetchStreamers = async () => {
@@ -39,7 +56,13 @@ function App() {
   const createStreamer = async (e) => {
     e.preventDefault();
 
+    const randomIndex = Math.floor(Math.random() * streamerImages.length);
+    const randomImage = streamerImages[randomIndex];
+
+    createForm.image = randomImage;
     const res = await axios.post("http://localhost:3010/streamers", createForm);
+
+    console.log(res.data.streamer);
 
     setStreamers([...streamers, res.data.streamer]);
 
