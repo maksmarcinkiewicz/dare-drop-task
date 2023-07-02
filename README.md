@@ -23,13 +23,17 @@ This is a simple streamer spotlight application that allows users to add their f
 1. Clone the repository from GitHub: `git clone https://github.com/maksmarcinkiewicz/dare-drop-task.git`
 2. Navigate to the project directory: `cd dare-drop-task`
 3. Install the dependencies for the frontend and backend:
-   - Frontend: `cd frontend && npm install`
+   - Frontend: `cd client && npm install`
    - Backend: `cd server && npm install`
-4. Set up the database of your choice and configure the connection settings in the backend.
-5. Start the development servers:
-   - Frontend: `cd frontend && npm start`
+4. Create a `.env` file in the `server` directory and add the following environment variables:
+   - `PORT`: The port number on which the server should run.
+   - `DB_URL`: The URL or connection string for the database.
+   - `SECRET`: The secret key for JWT authentication.
+5. Set up the database of your choice and configure the connection settings in the backend using the `DB_URL` environment variable.
+6. Start the development servers:
+   - Frontend: `cd client && npm start`
    - Backend: `cd server && npm run dev`
-6. Access the application in your browser at `http://localhost:3000`.
+7. Access the application in your browser at `http://localhost:3000`.
 
 ## Backend API Endpoints
 
