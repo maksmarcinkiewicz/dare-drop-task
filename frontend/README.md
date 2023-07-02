@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Streamer Spotlight Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a simple streamer spotlight application that allows users to add their favorite streamers and upvote or downvote them. It consists of a frontend built with React.js and a backend built with Node.js and Express.js. The backend stores the streamer data in a MongoDB, and the frontend fetches and displays the streamer information in real-time using websocket.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Streamer Submission Form: Users can submit their favorite streamers by providing the streamer's name, streaming platform, and description.
+- Streamer List: Displays a list of all submitted streamers along with their number of upvotes and downvotes. The list updates in real-time as new streamers are added and votes are cast.
+- Streamer Record Page: Shows detailed information about a specific streamer, including their name, description, platform, and a static image.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React.js 
+- Node.js
+- Express.js
+- MongoDB
+- WebSocket
+- JSON Web Token
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Installation and Setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository from GitHub: `git clone https://github.com/maksmarcinkiewicz/dare-drop-task.git`
+2. Navigate to the project directory: `cd dare-drop-task`
+3. Install the dependencies for the frontend and backend:
+   - Frontend: `cd frontend && npm install`
+   - Backend: `cd server && npm install`
+4. Set up the database of your choice and configure the connection settings in the backend.
+5. Start the development servers:
+   - Frontend: `cd frontend && npm start`
+   - Backend: `cd server && npm run dev`
+6. Access the application in your browser at `http://localhost:3000`.
 
-### `npm run build`
+## Backend API Endpoints
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `POST /streamers`: Receives new streamer submissions from the frontend and stores them in the database.
+- `GET /streamers`: Returns all stored streamer submissions in response to a request from the frontend.
+- `GET /streamers/[streamerId]`: Returns data about a specific streamer.
+- `PUT /streamers/[streamerId]/vote`: Receives an upvote for a specific streamer and updates their current upvote/downvote count.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Code Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The project is structured into two main directories:
 
-### `npm run eject`
+- `frontend`: Contains the frontend code built with React.js.
+- `server`: Contains the backend code built with Node.js and Express.js.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Feel free to explore the codebase to understand the implementation details of each component and endpoint.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

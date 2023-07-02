@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
+import streamer1 from "../assets/streamer1.png";
+import authStore from "../stores/authStore";
 
 export default function Streamer({ streamer, handleVote, deleteStreamer }) {
+  const store = authStore();
   return (
     <div key={streamer._id} className="card w-96 bg-base-100 shadow-xl">
       <figure>
-        <img
-          src="/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-          alt="Shoes"
-        />
+        <img src={streamer1} alt="Streamer profile" className="" />
       </figure>
       <div className="card-body">
         <h3 className="card-title">name: {streamer.name}</h3>
@@ -18,14 +18,16 @@ export default function Streamer({ streamer, handleVote, deleteStreamer }) {
           <button
             className="btn btn-outline"
             onClick={() => handleVote(streamer._id, "upvote")}
+            disabled={store.loggedIn ? false : true}
           >
-            Upvote
+            {store.loggedIn ? "UPVOTE" : "login to UPVOTE"}
           </button>
           <button
             className="btn btn-outline"
             onClick={() => handleVote(streamer._id, "downvote")}
+            disabled={store.loggedIn ? false : true}
           >
-            Downvote
+            {store.loggedIn ? "DOWNVOTE" : "login to DOWNVOTE"}
           </button>
           <Link to={`streamers/${streamer._id}`}>
             <button className="btn btn-info">read more</button>
