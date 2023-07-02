@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 export default function StreamersPage({
-  fetchNotes,
+  fetchStreamers,
   socket,
   setStreamers,
   createForm,
@@ -12,7 +12,7 @@ export default function StreamersPage({
   updateCreateFormField,
 }) {
   useEffect(() => {
-    fetchNotes();
+    fetchStreamers();
 
     socket.on("initialData", (streamersData) => {
       setStreamers(streamersData);
