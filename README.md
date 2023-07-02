@@ -40,7 +40,7 @@ This is a simple streamer spotlight application that allows users to add their f
 - `POST /streamers`: Receives new streamer submissions from the frontend and stores them in the database.
 - `GET /streamers`: Returns all stored streamer submissions in response to a request from the frontend.
 - `GET /streamers/[streamerId]`: Returns data about a specific streamer.
-- `PUT /streamers/[streamerId]/vote`: Receives an upvote for a specific streamer and updates their current upvote/downvote count.
+- `PUT /streamers/[streamerId]/vote`: Receives vote for a specific streamer and updates their current upvote/downvote count.
 
 ## Code Structure
 
