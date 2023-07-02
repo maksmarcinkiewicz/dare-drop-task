@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import streamer1 from "../assets/streamer1.png";
 
 export default function StreamerDetails({ fetchStreamer, streamer }) {
   const streamerId = useParams();
@@ -15,9 +14,9 @@ export default function StreamerDetails({ fetchStreamer, streamer }) {
     <>
       {streamer ? (
         <>
-          <div className="flex gap-10 justify-center items-center mt-36">
+          <div className="flex gap-10 justify-center items-center mt-36 container mx-auto">
             <img
-              src={streamer1}
+              src={streamer.image}
               alt="Streamer profile"
               className="w-3/12 rounded-full flex  "
             />

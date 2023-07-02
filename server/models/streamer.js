@@ -6,6 +6,7 @@ const streamerSchema = new mongoose.Schema({
   streamingPlatform: String,
   upvotes: Number,
   downvotes: Number,
+  image: String,
 });
 
 const Streamer = mongoose.model("Streamer", streamerSchema);
