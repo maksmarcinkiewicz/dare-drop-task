@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function StreamerDetails({ fetchStreamer, streamer }) {
   const streamerId = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchStreamer(streamerId.id);
@@ -18,6 +20,7 @@ export default function StreamerDetails({ fetchStreamer, streamer }) {
             <h3>STREAMER platform: {streamer.streamingPlatform}</h3>
             <h3>STREAMER description: {streamer.description}</h3>
           </div>
+          <button onClick={() => navigate("/")}>Go back</button>
         </>
       ) : (
         "loading"
