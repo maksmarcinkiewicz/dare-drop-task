@@ -120,6 +120,8 @@ function App() {
               <StreamerDetails
                 fetchStreamer={fetchStreamer}
                 streamer={streamer}
+                socket={socket}
+                setStreamer={setStreamer}
               />
             }
           />

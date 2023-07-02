@@ -8,5 +8,20 @@ export default function StreamerDetails({ fetchStreamer, streamer }) {
     fetchStreamer(streamerId.id);
   }, []);
   console.log(streamer);
-  return <div>{streamer ? streamer.name : "loading"}</div>;
+  return (
+    <>
+      {streamer ? (
+        <>
+          <div>
+            <p>here will be streamer img</p>
+            <h3>STREAMER NAME: {streamer.name}</h3>
+            <h3>STREAMER platform: {streamer.streamingPlatform}</h3>
+            <h3>STREAMER description: {streamer.description}</h3>
+          </div>
+        </>
+      ) : (
+        "loading"
+      )}
+    </>
+  );
 }
