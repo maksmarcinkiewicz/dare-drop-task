@@ -12,17 +12,15 @@ export default function Header() {
       </div>
       <div className="">
         <ul className="flex gap-5">
+          <li>
+            <Link to="/">
+              <button className="btn btn-outline">home</button>
+            </Link>
+          </li>
           {store.loggedIn ? (
             <>
-              {" "}
-              <li>
-                <Link to="/">
-                  <button className="btn btn-outline">home</button>
-                </Link>
-              </li>{" "}
               <li>
                 <Link to="/logout">
-                  {" "}
                   <button className="btn btn-outline">logout</button>
                 </Link>
               </li>
