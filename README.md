@@ -1,4 +1,4 @@
-# Streamer Spotlight Application (dare drop task)
+# Streamer Spotlight Application
 
 This is a simple streamer spotlight application that allows users to add their favorite streamers and upvote or downvote them. It consists of a frontend built with React.js and a backend built with Node.js and Express.js. The backend stores the streamer data in a MongoDB, and the frontend fetches and displays the streamer information in real-time using websocket.
 
@@ -42,12 +42,4 @@ This is a simple streamer spotlight application that allows users to add their f
 - `GET /streamers/[streamerId]`: Returns data about a specific streamer.
 - `PUT /streamers/[streamerId]/vote`: Receives vote for a specific streamer and updates their current upvote/downvote count.
 
-## Code Structure
-
-The project is structured into two main directories:
-
-- `frontend`: Contains the frontend code built with React.js.
-- `server`: Contains the backend code built with Node.js and Express.js.
-
-Feel free to explore the codebase to understand the implementation details of each component and endpoint.
 
